@@ -2,7 +2,7 @@
 """
 Created on Thu Feb  4 13:09:02 2021
 
-@author: Gagam
+@author: Gagan
 
 Starting an API for the random forest classifier
 """
@@ -13,7 +13,7 @@ import pandas as pd
 from flask import Flask, request
 from flasgger import Swagger
 
-with open(r"C:\Users\hp\Documents\Practice\Flask\rf.pkl", "rb") as model_file:
+with open(r'rf.pkl', "rb") as model_file:
     model = pickle.load(model_file)
 
 
@@ -23,7 +23,8 @@ swagger = Swagger(app)
 
 @app.route('/predict_file', methods=['POST'] )
 def predict_iris():
-    """Example file endpoint returning a prediction of predict_iris
+    """
+    Example file endpoint returning a prediction of predict_iris
     This is using docstring for specifications.
     ---
     parameters:
@@ -31,9 +32,6 @@ def predict_iris():
         in: formData
         type: file
         required: true
-        responses:
-        200:
-
      """
     input_data = pd.read_csv(request.files.get("input_file"), header = None)
 
